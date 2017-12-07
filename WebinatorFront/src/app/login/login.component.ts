@@ -5,6 +5,12 @@ import { Component, OnInit } from '@angular/core';
   templateUrl: './login.component.html',
   styleUrls: ['./login.component.css']
 })
+
+export interface user {
+	mail?: string;
+	pass?: string;
+}
+
 export class LoginComponent implements OnInit {
 
   constructor() { }
@@ -12,5 +18,5 @@ export class LoginComponent implements OnInit {
   ngOnInit() {
   }
 
-  test = 'test'
+  user: user
 }
