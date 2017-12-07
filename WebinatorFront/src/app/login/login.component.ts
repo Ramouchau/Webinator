@@ -1,15 +1,11 @@
 import { Component, OnInit } from '@angular/core';
+import { User } from '../_models/user'
 
 @Component({
   selector: 'app-login',
   templateUrl: './login.component.html',
   styleUrls: ['./login.component.css']
 })
-
-/*export interface user {
-	mail?: string;
-	pass?: string;
-}*/
 
 export class LoginComponent implements OnInit {
 
@@ -18,5 +14,5 @@ export class LoginComponent implements OnInit {
   ngOnInit() {
   }
 
-  //user: user
+  user: User
 }

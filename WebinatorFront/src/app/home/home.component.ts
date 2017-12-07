@@ -1,5 +1,4 @@
 import { Component, OnInit } from '@angular/core';
-import { User } from '../_models/user'
 
 @Component({
   selector: 'app-home',
@@ -13,9 +12,4 @@ export class HomeComponent implements OnInit {
   ngOnInit() {
   }
 
-  user: User = {
-	mail: 'ssad',
-	password: 's',
-	username: 'w'
-  }
 }
