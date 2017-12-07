@@ -6,10 +6,10 @@ import { Component, OnInit } from '@angular/core';
   styleUrls: ['./login.component.css']
 })
 
-export interface user {
+/*export interface user {
 	mail?: string;
 	pass?: string;
-}
+}*/
 
 export class LoginComponent implements OnInit {
 
@@ -18,5 +18,5 @@ export class LoginComponent implements OnInit {
   ngOnInit() {
   }
 
-  user: user
+  //user: user
 }
