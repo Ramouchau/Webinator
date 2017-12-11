@@ -10,6 +10,11 @@ import { Router } from '@angular/router';
 })
 
 export class LoginComponent implements OnInit {
+	public user: LoginSendData = {
+		mail: '',
+		password: ''
+	};
+
 	public constructor(
 		private http: HttpClient,
 		private router: Router
@@ -19,7 +24,7 @@ export class LoginComponent implements OnInit {
 	}
 
 	public login() {
-		this.http.post('/api/login', {}).subscribe((data) => {
+		this.http.post('/api/login', this.user).subscribe((data) => {
 			this.router.navigate(['/home']);
 		});
 	}
