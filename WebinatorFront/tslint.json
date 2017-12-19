@@ -55,6 +55,7 @@
 		],
 		"unified-signatures": true,
 
+		"alwaysShowRuleFailuresAsWarnings": true,
 		"curly": [true, "as-needed"],
 		"forin": true,
 		"label-position": true,

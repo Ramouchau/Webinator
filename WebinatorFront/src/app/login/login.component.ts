@@ -1,7 +1,8 @@
 import { Component, OnInit } from '@angular/core';
-import { LoginSendData } from '../_models/login';
 import { HttpClient } from '@angular/common/http';
 import { Router } from '@angular/router';
+import { FormGroup, FormControl, Validators } from '@angular/forms';
+import { APILoginInputs } from '../_models/login';
 
 @Component({
 	selector: 'app-login',
@@ -10,22 +11,34 @@ import { Router } from '@angular/router';
 })
 
 export class LoginComponent implements OnInit {
-	public user: LoginSendData = {
-		mail: '',
-		password: ''
-	};
+	public loginForm: FormGroup;
+	public emailCtrl: FormControl;
+	public passwordCtrl: FormControl;
 
 	public constructor(
 		private http: HttpClient,
 		private router: Router
 	) { /**/ }
 
-	public ngOnInit() { /* */
+	public ngOnInit() {
+		this._createForm();
 	}
 
-	public login() {
-		this.http.post('/api/login', this.user).subscribe((data) => {
+	public onLoginSubmit() {
+		if (this.loginForm.valid)
+			console.log('test');
+		/*this.http.post('/api/login', this.user).subscribe((data) => {
 			this.router.navigate(['/home']);
+		});*/
+	}
+
+	private _createForm() {
+		this.emailCtrl = new FormControl('', [Validators.email, Validators.required]);
+		this.passwordCtrl = new FormControl('', [Validators.minLength(6), Validators.required]);
+
+		this.loginForm = new FormGroup({
+			email: this.emailCtrl,
+			password: this.passwordCtrl
 		});
 	}
 }
