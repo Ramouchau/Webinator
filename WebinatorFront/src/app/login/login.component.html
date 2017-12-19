@@ -1,4 +1,5 @@
-<mat-card>
+<div id="body">
+	<mat-card>
 		<h2>Login</h2>
 		<form [formGroup]="loginForm" (ngSubmit)="onLoginSubmit()" novalidate>
 			<mat-form-field class="full-width-input">
@@ -9,5 +10,6 @@
 			</mat-form-field>
 			<button mat-raised-button type="submit" color="primary">Login</button>
 		</form>
-	<a href="/register">register </a>
-</mat-card>
+		<a mat-button href="/register">register </a>
+	</mat-card>
+</div>
