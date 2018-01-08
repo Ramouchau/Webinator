@@ -1,0 +1,15 @@
+<div id="body">
+	<mat-card>
+		<h2>Login</h2>
+		<form [formGroup]="loginForm" (ngSubmit)="onLoginSubmit()" novalidate>
+			<mat-form-field class="full-width-input">
+				<input matInput placeholder="Email" type="email" formControlName="email" required>
+			</mat-form-field>
+			<mat-form-field class="full-width-input">
+				<input matInput placeholder="Password" type="password" formControlName="password" required>
+			</mat-form-field>
+			<button mat-raised-button type="submit" color="primary">Login</button>
+		</form>
+		<a mat-button href="/register">register </a>
+	</mat-card>
+</div>

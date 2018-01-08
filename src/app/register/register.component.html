@@ -1,0 +1,28 @@
+<div id="body">
+	<mat-card>
+		<h2>Register</h2>
+		<form [formGroup]="registerForm" (ngSubmit)="onRegisterSubmit()" novalidate>
+			<mat-form-field class="full-width-input">
+				<input matInput placeholder="Email" type="email" formControlName="email" required>
+				<mat-error *ngIf="emailCtrl.hasError('email')">
+					Please enter a valid email address
+				</mat-error>
+			</mat-form-field>
+			<mat-form-field class="full-width-input">
+				<input matInput placeholder="User Name" type="text" formControlName="userName" required>
+				<mat-error *ngIf="userNameCtrl.hasError('minlength')">
+					User name needs at least 3 characters
+				</mat-error>
+			</mat-form-field>
+			<mat-form-field class="full-width-input">
+				<input matInput placeholder="Password" type="password" formControlName="password" required>
+				<mat-error *ngIf="passwordCtrl.hasError('minlength')">
+					Password needs at least 6 characters
+				</mat-error>
+			</mat-form-field>
+			<button mat-raised-button type="submit" color="primary">Register</button>
+		</form>
+		<br/>
+		<a mat-button href="/login">login</a>
+	</mat-card>
+</div>
