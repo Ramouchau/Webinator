@@ -17,7 +17,7 @@ export class HomeComponent implements OnInit {
 	public defaultUser: User = new User();
 
 	public padding: { left: number, right: number, top: number, bottom: number }
-		= { left: 220, right: 220, top: 100, bottom: 0 }
+		= { left: 220, right: 220, top: 100, bottom: 0 };
 
 	public constructor() {
 		/**/
