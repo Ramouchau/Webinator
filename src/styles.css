@@ -1,1 +1,28 @@
 @import "~@angular/material/prebuilt-themes/indigo-pink.css";
+
+*{
+	margin: 0;
+	padding: 0;
+	border: 0 solid;
+	color: inherit;
+	font: inherit;
+	line-height: inherit;
+	text-transform: inherit;
+	text-decoration: inherit;
+	text-align: inherit;
+	text-indent: inherit;
+	text-transform: inherit;
+	letter-spacing: inherit;
+	box-sizing: border-box;
+	opacity: 1;
+}
+
+#body {
+  position: fixed;
+  top: 0;
+	left: 0;
+	right: 0;
+	bottom: 0;
+	background: url(./assets/backGround.jpg) center no-repeat;
+	background-size: cover;
+}
