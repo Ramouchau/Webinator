@@ -10,13 +10,15 @@ import { MaterialModule } from './material.module';
 import { FormsModule, ReactiveFormsModule  } from '@angular/forms';
 import { HttpClientModule} from '@angular/common/http';
 import { RegisterComponent } from './register/register.component';
+import { IndexComponent } from './index/index.component';
 
 @NgModule({
 	declarations: [
 		AppComponent,
 		HomeComponent,
 		LoginComponent,
-		RegisterComponent
+		RegisterComponent,
+		IndexComponent
 	],
 	imports: [
 		BrowserModule,

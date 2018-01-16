@@ -1,0 +1,184 @@
+@font-face {
+	font-family: Montserrat;
+	src:
+		local(Montserrat),
+		url(../../assets/fonts/Montserrat.woff2);
+}
+
+/* ------------------- */
+
+* {
+	margin: 0;
+	padding: 0;
+	border: 0 solid #000;
+	background: transparent;
+	font: inherit;
+	border-radius: 0;
+	box-sizing: border-box;
+}
+
+body {
+	background: #323;
+}
+
+#body-bg {
+	position: fixed;
+	top: 0;
+	left: 0;
+	right: 0;
+	bottom: 0;
+	background: url(../../assets/w/stars.jpg) center no-repeat, #323;
+	background-size: cover;
+	filter: blur(10px);
+	transition: filter ease 1s, background ease 1s;
+}
+
+#body {
+	position: fixed;
+	top: 0;
+	left: 0;
+	right: 0;
+	bottom: 0;
+	font-family: Montserrat, sans-serif;
+	color: rgba(255,255,255,0.5);
+	background: rgba(220,220,220,0.1);
+}
+
+/* ------------------- */
+
+#mm:before {
+	display: block;
+	position: fixed;
+	top: 0;
+	left: 0;
+	right: 0;
+	height: 60px;
+	content: "";
+	background: -webkit-linear-gradient(top, rgba(20,20,20,0.9), transparent);
+	z-index: -1;
+}
+
+#mm {
+	display: flex;
+	flex-direction: row;
+	justify-content: space-between;
+	position: fixed;
+	top: 0;
+	left: 0;
+	right: 0;
+	height: 40px;
+	z-index: 1000;
+	overflow: hidden;
+	color: rgba(255,255,255,0.7);
+	line-height: 40px;
+}
+
+#mm > [data-contents="left"] {
+}
+#mm > [data-contents="middle"] {
+	letter-spacing: -1.5px;
+	color: #f44;
+	text-transform: uppercase;
+}
+#mm > [data-contents="right"] {
+}
+
+#mm_sm-bt {
+	width: 40px;
+	background: url(../../assets/icons/menu.svg) center no-repeat;
+	background-size: 20px;
+}
+
+#mm_cancel-bt {
+	width: 40px;
+	background: url(../../assets/icons/cancel.svg) center no-repeat;
+	background-size: 15px;
+}
+
+.mm_bt {
+	cursor: pointer;
+	height: 40px;
+}
+
+/* ------------------- */
+
+#content {
+	display: flex;
+	position: fixed;
+	top: 40px;
+	left: 0;
+	right: 0;
+	bottom: 0;
+	justify-content: space-around;
+	align-items: center;
+	flex-direction: row;
+}
+
+/* ------------------- */
+
+.planet {
+	display: inline-flex;
+	flex-direction: column;
+	align-content: center;
+}
+
+.planet > [data-content=name] {
+	text-align: center;
+	color: rgba(255,255,255,0.7);
+	letter-spacing: -0.5px;
+}
+
+.planet > [data-content=image] {
+	display: inline-block;
+	width: 200px;
+	height: 200px;
+	background: left repeat, #323;
+	background-size: 628px 200px;
+	background-position: left;
+	border-radius: 100%;
+	margin: 20px;
+	border: 1px solid rgba(128,128,128,0.7);
+	box-shadow: 0 0 100px -5px #fff, 20px -24px 120px 0px #000 inset;
+	animation: planet-roll 15s infinite linear, planet-glow 10s infinite ease-in-out alternate-reverse;
+	transition: transform ease 0.7s, margin ease 0.7s, opacity ease 0.5s;
+	opacity: 0.9;
+	z-index: 0;
+	cursor: pointer;
+}
+
+.planet:hover > [data-content=image] {
+	transform: scale(1.5);
+	margin: 70px 50px;
+	z-index: 2;
+	opacity: 1;
+}
+
+@keyframes planet-roll {
+	0% {
+		background-position: 0px 0px;
+	}
+	100% {
+		background-position: -628px 0;
+	}
+}
+
+@keyframes planet-glow {
+	0%   {box-shadow: 0 0 100px -5px #fff, 20px -24px 120px 0px #000 inset;}
+	5%   {box-shadow: 0 0 150px 0px  #fff, 20px -24px 120px 0px #000 inset;}
+	15%   {box-shadow: 0 0 100px -5px #fff, 20px -24px 120px 0px #000 inset;}
+	30%  {box-shadow: 0 0 150px 0px  #fff, 20px -24px 120px 0px #000 inset;}
+	40%  {box-shadow: 0 0 100px -5px #fff, 20px -24px 120px 0px #000 inset;}
+	65%  {box-shadow: 0 0 150px 0px  #fff, 20px -24px 120px 0px #000 inset;}
+	70%  {box-shadow: 0 0 200px -5px #fff, 20px -24px 120px 0px #000 inset;}
+	100% {box-shadow: 0 0 140px 0px  #fff, 20px -24px 120px 0px #000 inset;}
+}
+
+.planet[data-type=lava] > [data-content=image] {
+	background-image: url(../../assets/planet-textures/lava.png);
+}
+.planet[data-type=ice] > [data-content=image] {
+	background-image: url(../../assets/planet-textures/ice.jpg);
+}
+.planet[data-type=forest] > [data-content=image] {
+	background-image: url(../../assets/planet-textures/forest.jpg);
+}
