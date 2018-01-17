@@ -1,4 +1,13 @@
-import { APIErrors } from './APIErrors';
+import { Injectable } from '@angular/core';
+import { APIErrors } from '../_utils/APIResult';
+
+@Injectable()
+
+export class LoginService {
+
+  public constructor() { /**/ }
+
+}
 
 /** Inputs for the login service. */
 export interface APILoginInputs {

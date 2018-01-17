@@ -2,7 +2,7 @@ import { Component, OnInit } from '@angular/core';
 import { HttpClient } from '@angular/common/http';
 import { Router } from '@angular/router';
 import { FormGroup, FormControl, Validators } from '@angular/forms';
-import { APILoginInputs } from '../_models/login';
+import { APILoginInputs } from '../_services/login.service';
 
 @Component({
 	selector: 'app-login',

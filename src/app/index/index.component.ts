@@ -1,4 +1,6 @@
 import { Component, OnInit } from '@angular/core';
+import { IndexService } from '../_services/index.service';
+import { Planet } from '../_models/planet';
 
 @Component({
 	selector: 'app-index',
@@ -7,10 +9,13 @@ import { Component, OnInit } from '@angular/core';
 })
 export class IndexComponent implements OnInit {
 
-	public constructor() { /**/ }
+	public planets: Array<Planet>;
+	public constructor(private _data: IndexService) { /**/ }
 
 	public ngOnInit() {
-		/**/
+		this._data.getUserPlanets().then((res: Array<Planet>) => {
+			this.planets = res;
+		});
 	}
 
 }
