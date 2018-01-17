@@ -1,11 +1,11 @@
 import { User } from './user';
 
-export interface Planet {
-	id: number;
-	name: string;
-	age: number;
-	event: 'none'|'meteorit';
-	shipsCount: number;
-	lastUpdateTime: Date;
-	owner: User|null;
+export class Planet {
+	public id: number;
+	public name: string;
+	public age: number;
+	public event: 'none'|'meteorit';
+	public shipsCount: number;
+	public lastUpdateTime: Date;
+	public owner: User|null;
 }

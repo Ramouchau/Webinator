@@ -1,12 +1,10 @@
 import { Planet } from './planet';
 
-export interface User {
-	id: number;
-	username: string;
-	email: string;
-	score: number|null;
-	bestScore: number|null;
-	actionPointsCount: number;
-	lastUpdate: Date;
-	planets: Array<Planet>;
+export class User {
+	public id: number;
+	public username: string;
+	public email: string;
+	public score: number|null;
+	public lastUpdate: Date;
+	public planets: Array<Planet>;
 }
