@@ -8,3 +8,5 @@ export class User {
 	public lastUpdate: Date;
 	public planets: Array<Planet>;
 }
+
+export const user = new User();

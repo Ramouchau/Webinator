@@ -1,19 +1,6 @@
-<mat-toolbar>
-  <mat-toolbar-row class="toolbar-infos">
-    <span>Name of your Galaxy: <span id="galaxy-name">{{ defaultUser.name }}</span></span>
-    <span class="fill-space"></span>
-    <span>Total amount of planets: {{ defaultUser.planets.length }}</span>
-    <span>Total amount of ships: {{ defaultUser.getTotalShips() }}</span>
-  </mat-toolbar-row>
-</mat-toolbar>
-
-<mat-drawer-container class="container" autosize>
-  <div class="example-sidenav-content">
-    Some text
-  </div>
-
-</mat-drawer-container>
-
-<div id="home-main">
-
+<div id="content">
+	<span *ngFor="let planet of planets" class=planet data-type=lava>
+		<div data-content=image></div>
+		<div data-content=name>{{ planet.name }}</div>
+	</span>
 </div>

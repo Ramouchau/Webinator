@@ -4,7 +4,7 @@ import { Planet } from '../_models/planet';
 
 @Injectable()
 
-export class IndexService {
+export class HomeService {
 
 	public constructor() { /**/ }
 

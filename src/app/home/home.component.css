@@ -1,41 +1,66 @@
-span {
-  color: white;
+.planet {
+	display: inline-flex;
+	flex-direction: column;
+	align-content: center;
 }
 
-mat-toolbar {
-  background-color: rgba(20, 20, 100, 0.4);
-  border: 5px solid #303030;
-  border-radius: 5px;
+.planet > [data-content=name] {
+	text-align: center;
+	color: rgba(255,255,255,0.7);
+	letter-spacing: -0.5px;
 }
 
-mat-toolbar-row {
-  height: 40px;
+.planet > [data-content=image] {
+	display: inline-block;
+	width: 200px;
+	height: 200px;
+	background: left repeat, #323;
+	background-size: 628px 200px;
+	background-position: left;
+	border-radius: 100%;
+	margin: 20px;
+	border: 1px solid rgba(128,128,128,0.7);
+	box-shadow: 0 0 100px -5px #fff, 20px -24px 120px 0px #000 inset;
+	/*animation: planet-roll 15s infinite linear, planet-glow 10s infinite ease-in-out alternate-reverse;*/
+	transition: transform ease 0.7s, margin ease 0.7s, opacity ease 0.5s;
+	opacity: 0.9;
+	z-index: 0;
+	cursor: pointer;
 }
 
-.fill-space {
-  flex: 1 1 auto;
+.planet:hover > [data-content=image] {
+	transform: scale(1.5);
+	margin: 70px 50px;
+	z-index: 2;
+	opacity: 1;
 }
 
-.toolbar-infos span {
-  margin: 0 20px 0 20px;
+@keyframes planet-roll {
+	0% {
+		background-position: 0px 0px;
+	}
+	100% {
+		background-position: -628px 0;
+	}
 }
 
-.container {
-  width: 200px;
-  height: 300px;
-  border: 1px solid rgba(0, 0, 0, 0.5);
+@keyframes planet-glow {
+	0%   {box-shadow: 0 0 100px -5px #fff, 20px -24px 120px 0px #000 inset;}
+	5%   {box-shadow: 0 0 150px 0px  #fff, 20px -24px 120px 0px #000 inset;}
+	15%   {box-shadow: 0 0 100px -5px #fff, 20px -24px 120px 0px #000 inset;}
+	30%  {box-shadow: 0 0 150px 0px  #fff, 20px -24px 120px 0px #000 inset;}
+	40%  {box-shadow: 0 0 100px -5px #fff, 20px -24px 120px 0px #000 inset;}
+	65%  {box-shadow: 0 0 150px 0px  #fff, 20px -24px 120px 0px #000 inset;}
+	70%  {box-shadow: 0 0 200px -5px #fff, 20px -24px 120px 0px #000 inset;}
+	100% {box-shadow: 0 0 140px 0px  #fff, 20px -24px 120px 0px #000 inset;}
 }
 
-#galaxy-name {
-  color: red;
+.planet[data-type=lava] > [data-content=image] {
+	background-image: url(../../assets/planet-textures/lava.png);
 }
-
-#home-main {
-  width: 100%;
-  height: 100%;
-  position: absolute;
-  top: 0;
-  left: 0;
-  z-index: -1000;
-  background-image: url(../../assets/galaxy.jpg);
+.planet[data-type=ice] > [data-content=image] {
+	background-image: url(../../assets/planet-textures/ice.jpg);
+}
+.planet[data-type=forest] > [data-content=image] {
+	background-image: url(../../assets/planet-textures/forest.jpg);
 }

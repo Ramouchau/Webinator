@@ -1,6 +1,6 @@
 import { Component, OnInit } from '@angular/core';
-import { User } from '../user';
-import { Planet } from '../planet';
+import { HomeService } from '../_services/home.service';
+import { Planet } from '../_models/planet';
 
 @Component({
 	selector: 'app-home',
@@ -9,22 +9,13 @@ import { Planet } from '../planet';
 })
 export class HomeComponent implements OnInit {
 
-	public planets: Array<Planet> = [
-		{ id: 1, ships: 16, event: 0 },
-		{ id: 2, ships: 72, event: 0 }
-	];
+	public planets: Array<Planet>;
 
-	public defaultUser: User = new User();
-
-	public padding: { left: number, right: number, top: number, bottom: number }
-		= { left: 220, right: 220, top: 100, bottom: 0 };
-
-	public constructor() {
-		/**/
-	}
+	public constructor(private _data: HomeService) { /**/ }
 
 	public ngOnInit() {
-		this.defaultUser.planets = this.planets;
+		this._data.getUserPlanets().then((res: Array<Planet>) => {
+			this.planets = res;
+		});
 	}
-
 }

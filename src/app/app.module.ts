@@ -9,20 +9,18 @@ import { MaterialModule } from './material.module';
 
 import { AppComponent } from './app.component';
 import { HomeComponent } from './home/home.component';
+import { HomeService } from './_services/home.service';
 import { LoginComponent } from './login/login.component';
 import { LoginService } from './_services/login.service';
 import { RegisterComponent } from './register/register.component';
 import { RegisterService } from './_services/register.service';
-import { IndexComponent } from './index/index.component';
-import { IndexService } from './_services/index.service';
 
 @NgModule({
 	declarations: [
 		AppComponent,
 		HomeComponent,
 		LoginComponent,
-		RegisterComponent,
-		IndexComponent
+		RegisterComponent
 	],
 	imports: [
 		BrowserModule,
@@ -36,7 +34,7 @@ import { IndexService } from './_services/index.service';
 	providers: [
 		LoginService,
 		RegisterService,
-		IndexService
+		HomeService
 	],
 	bootstrap: [AppComponent]
 })
