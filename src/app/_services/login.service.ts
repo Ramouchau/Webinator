@@ -1,12 +1,27 @@
 import { Injectable } from '@angular/core';
-import { APIErrors } from '../_utils/APIResult';
+import { APIResult, APIErrors} from '../_utils/APIResult';
+import { HttpClient } from '@angular/common/http';
+import { serverUrl } from '../../env/api';
+import { error } from 'util';
 
 @Injectable()
 
 export class LoginService {
 
-  public constructor() { /**/ }
+	public constructor(private _http: HttpClient) { /**/ }
 
+	public login(loginInputs: APILoginInputs): Promise<APIResult<APILoginOutputs, APIErrors>> {
+		return new Promise((resolve, reject) => {
+			this._http.post(serverUrl + '/login', loginInputs).subscribe(
+				(data: APIResult<APILoginOutputs, APIErrors>) => {
+					resolve(data);
+				},
+				(error) => {
+					reject(error);
+				}
+			);
+		});
+	}
 }
 
 /** Inputs for the login service. */

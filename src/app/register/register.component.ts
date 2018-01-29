@@ -2,6 +2,7 @@ import { Component, OnInit } from '@angular/core';
 import { FormGroup, FormControl, Validators } from '@angular/forms';
 import { HttpClient } from '@angular/common/http';
 import { Router } from '@angular/router';
+import { RegisterService, APIRegisterInputs } from '../_services/register.service';
 
 @Component({
 	selector: 'app-register',
@@ -9,6 +10,7 @@ import { Router } from '@angular/router';
 	styleUrls: ['./register.component.css']
 })
 export class RegisterComponent implements OnInit {
+	public requestError: string = null;
 	public registerForm: FormGroup;
 	public passwords: FormGroup;
 	public emailCtrl: FormControl;
@@ -16,8 +18,8 @@ export class RegisterComponent implements OnInit {
 	public passwordCtrl: FormControl;
 
 	public constructor(
-		private http: HttpClient,
-		private router: Router
+		private _router: Router,
+		private _registerService: RegisterService
 	) { /**/ }
 
 	public ngOnInit() {
@@ -26,10 +28,19 @@ export class RegisterComponent implements OnInit {
 
 	public onRegisterSubmit() {
 		if (this.registerForm.valid)
-			console.log('test');
-		/*this.http.post('/api/register', this.user).subscribe((data) => {
-			this.router.navigate(['/home']);
-		});*/
+			this._registerService.register({
+				email: this.emailCtrl.value,
+				username: this.userNameCtrl.value,
+				password: this.passwordCtrl.value
+			})
+				.then((data) => {
+					console.log('yes', data);
+					this._router.navigate(['/login']);
+				})
+				.catch((err) => {
+					console.log('no', err);
+					this.requestError = err;
+				});
 	}
 
 	private _createForm() {

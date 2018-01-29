@@ -10,3 +10,28 @@ export const enum APIErrors {
 	/** Register service: email already exists. */
 	REGISTER_EMAIL_EXISTS
 }
+
+export abstract class APIResult<TContents, TError> {
+
+	// Public attributes
+	/** API success information. */
+	public contents: TContents;
+
+	/** API error informaiton. */
+	public error: TError;
+
+	// Constructor
+	public constructor(contents: TContents, error: TError) {
+		this.contents = contents;
+		this.error = error;
+	}
+
+	// Public methods
+	/** Stringifies this instance. */
+	public toString() {
+		return JSON.stringify({
+			contents: this.contents,
+			error: this.error
+		});
+	}
+}

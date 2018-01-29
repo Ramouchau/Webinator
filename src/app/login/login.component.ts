@@ -2,7 +2,9 @@ import { Component, OnInit } from '@angular/core';
 import { HttpClient } from '@angular/common/http';
 import { Router } from '@angular/router';
 import { FormGroup, FormControl, Validators } from '@angular/forms';
-import { APILoginInputs } from '../_services/login.service';
+import { APILoginInputs, LoginService } from '../_services/login.service';
+import { user } from '../_models/user';
+import { error } from 'util';
 
 @Component({
 	selector: 'app-login',
@@ -14,10 +16,11 @@ export class LoginComponent implements OnInit {
 	public loginForm: FormGroup;
 	public emailCtrl: FormControl;
 	public passwordCtrl: FormControl;
+	public loginError: string;
 
 	public constructor(
-		private http: HttpClient,
-		private router: Router
+		private _router: Router,
+		private _loginServices: LoginService
 	) { /**/ }
 
 	public ngOnInit() {
@@ -26,10 +29,23 @@ export class LoginComponent implements OnInit {
 
 	public onLoginSubmit() {
 		if (this.loginForm.valid)
-			console.log('test');
-		/*this.http.post('/api/login', this.user).subscribe((data) => {
-			this.router.navigate(['/home']);
-		});*/
+			this._loginServices.login({
+				email: this.emailCtrl.value,
+				password: this.passwordCtrl.value
+			})
+				.then((data) => {
+					if (data.error) {
+						this.loginError = data.error.toString();
+						return;
+					}
+					user.email = data.contents.email;
+					user.username = data.contents.username;
+					user.id = data.contents.id;
+					this._router.navigate(['/home']);
+				})
+				.catch((error) => {
+					this.loginError = 'une erreur est survenue.';
+				});
 	}
 
 	private _createForm() {
