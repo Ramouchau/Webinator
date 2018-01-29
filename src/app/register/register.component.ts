@@ -34,12 +34,15 @@ export class RegisterComponent implements OnInit {
 				password: this.passwordCtrl.value
 			})
 				.then((data) => {
-					console.log('yes', data);
+					if (data.error) {
+						console.log('no', data.error);
+						this.requestError = data.error.devInfo;
+						return;
+					}
 					this._router.navigate(['/login']);
 				})
 				.catch((err) => {
-					console.log('no', err);
-					this.requestError = err;
+					this.requestError = 'une erreur est survenue.';
 				});
 	}
 

@@ -1,5 +1,5 @@
 import { Injectable } from '@angular/core';
-import { APIResult, APIErrors } from '../_utils/APIResult';
+import { APIResult, APIErrors } from '@etna-proj/webinator-server';
 import { HttpClient } from '@angular/common/http';
 import { serverUrl } from '../../env/api';
 
@@ -10,15 +10,15 @@ export class RegisterService {
 	public constructor(private _http: HttpClient) { /**/ }
 
 	public register(registerInputs: APIRegisterInputs): Promise<APIResult<APIRegisterOutputs, APIErrors>> {
-			return new Promise((resolve, reject) =>
-				this._http.post(serverUrl + '/register', registerInputs).subscribe(
-					(data: APIResult<APIRegisterOutputs, APIErrors>) => {
-						resolve(data);
-					},
-					(error) => {
-						reject(error);
-					}
-				));
+		return new Promise((resolve, reject) =>
+			this._http.post(serverUrl + '/register', registerInputs).subscribe(
+				(data: APIResult<APIRegisterOutputs, APIErrors>) => {
+					resolve(data);
+				},
+				(error) => {
+					reject(error);
+				}
+			));
 	}
 }
 
