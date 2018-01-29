@@ -1,5 +1,5 @@
 import { Injectable } from '@angular/core';
-import { APIResult, APIErrors } from '@etna-proj/webinator-server';
+import { APIResult, APIErrors } from '../_utils/APIResult';
 import { HttpClient } from '@angular/common/http';
 import { serverUrl } from '../../env/api';
 
