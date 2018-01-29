@@ -36,7 +36,7 @@ export class RegisterComponent implements OnInit {
 				.then((data) => {
 					if (data.error) {
 						console.log('no', data.error);
-						this.requestError = data.error.devInfo;
+						// this.requestError = data.error.devInfo;
 						return;
 					}
 					this._router.navigate(['/login']);
