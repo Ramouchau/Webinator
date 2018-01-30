@@ -1,5 +1,5 @@
 import { Injectable } from '@angular/core';
-import { APIResult, APIErrors } from '../_utils/APIResult';
+import { ExpressLoginInputs, ExpressLoginOutputs, APIResult, APIError } from '@etna-proj/webinator-server';
 import { HttpClient } from '@angular/common/http';
 import { serverUrl } from '../../env/api';
 
@@ -9,10 +9,10 @@ export class LoginService {
 
 	public constructor(private _http: HttpClient) { /**/ }
 
-	public login(loginInputs: APILoginInputs): Promise<APIResult<APILoginOutputs, APIErrors>> {
+	public login(loginInputs: ExpressLoginInputs): Promise<APIResult<ExpressLoginOutputs, APIError>> {
 		return new Promise((resolve, reject) => {
 			this._http.post(serverUrl + '/login', loginInputs).subscribe(
-				(data: APIResult<APILoginOutputs, APIErrors>) => {
+				(data: APIResult<ExpressLoginOutputs, APIError>) => {
 					resolve(data);
 				},
 				(error) => {
@@ -22,23 +22,3 @@ export class LoginService {
 		});
 	}
 }
-
-/** Inputs for the login service. */
-export interface APILoginInputs {
-	email: string;
-	password: string;
-}
-
-/** Outputs for the login service. */
-export interface APILoginOutputs {
-	id: number;
-	username: string;
-	email: string;
-}
-
-export const loginErrors = {
-	INVALID: APIErrors.INVALID,
-	UNKNOWN: APIErrors.UNKNOWN,
-	WRONG_EMAIL: APIErrors.LOGIN_WRONG_EMAIL,
-	WRONG_PASSWORD: APIErrors.LOGIN_WRONG_PASSWORD
-};

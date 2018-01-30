@@ -2,13 +2,14 @@ import { Component, OnInit } from '@angular/core';
 import { FormGroup, FormControl, Validators } from '@angular/forms';
 import { HttpClient } from '@angular/common/http';
 import { Router } from '@angular/router';
-import { RegisterService, APIRegisterInputs } from '../_services/register.service';
+import { RegisterService } from '../_services/register.service';
 
 @Component({
 	selector: 'app-register',
 	templateUrl: './register.component.html',
 	styleUrls: ['./register.component.css']
 })
+
 export class RegisterComponent implements OnInit {
 	public requestError: string = null;
 	public registerForm: FormGroup;
@@ -36,7 +37,7 @@ export class RegisterComponent implements OnInit {
 				.then((data) => {
 					if (data.error) {
 						console.log('no', data.error);
-						// this.requestError = data.error.devInfo;
+						this.requestError = data.error.devInfo;
 						return;
 					}
 					this._router.navigate(['/login']);

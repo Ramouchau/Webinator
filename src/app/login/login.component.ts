@@ -2,9 +2,9 @@ import { Component, OnInit } from '@angular/core';
 import { HttpClient } from '@angular/common/http';
 import { Router } from '@angular/router';
 import { FormGroup, FormControl, Validators } from '@angular/forms';
-import { APILoginInputs, LoginService } from '../_services/login.service';
+import { LoginService } from '../_services/login.service';
 import { user } from '../_models/user';
-import { error } from 'util';
+import { loginToken } from '../../env/localStorage';
 
 @Component({
 	selector: 'app-login',
@@ -38,9 +38,7 @@ export class LoginComponent implements OnInit {
 						this.loginError = data.error.toString();
 						return;
 					}
-					user.email = data.contents.email;
-					user.username = data.contents.username;
-					user.id = data.contents.id;
+					localStorage.setItem(loginToken, data.contents.token);
 					this._router.navigate(['/home']);
 				})
 				.catch((error) => {
