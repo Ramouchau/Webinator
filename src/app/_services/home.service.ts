@@ -6,6 +6,8 @@ import {
 	RSocketLoginOutputs,
 	RSocketListUserPlanetsInputs,
 	RSocketListUserPlanetsOutputs,
+	RSocketAttackPlanetInputs,
+	RSocketAttackPlanetOutputs,
 	APIError,
 	APISuccess
 } from '@etna-proj/webinator-server';
@@ -26,7 +28,7 @@ export class HomeService {
 		if (!token)
 			return cb(null);
 		this._rsoket.get<RSocketLoginInputs, APIError | APISuccess<RSocketLoginOutputs>>('login', { token: token }, (err, data) => {
-			if (err)
+			if (err || data.error)
 				return cb(null);
 			else if (data) {
 				user.id = data.contents.user.id;
@@ -42,12 +44,18 @@ export class HomeService {
 	public getUserPlanets() {
 		return new Promise((resolve, reject) => {
 			const token = localStorage.getItem(loginToken);
-			this._rsoket.get<RSocketListUserPlanetsInputs, APIError | APISuccess<RSocketListUserPlanetsOutputs>>('list-user-planets', { token: token }, (err, data) => {
+			this._rsoket.get<RSocketListUserPlanetsInputs, APIError | APISuccess<RSocketListUserPlanetsOutputs>>('list-user-planets', {}, (err, data) => {
 				if (err)
 					return reject(err);
-				else if (data)
+				else if (data.error)
+					return reject(data.error);
+				else
 					return resolve(data.contents.planets);
 			});
 		});
+	}
+
+	public attackPlanet() {
+
 	}
 }

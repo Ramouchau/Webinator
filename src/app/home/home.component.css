@@ -1,66 +1,144 @@
+#navbar {
+    width: 100%;
+    height: 50px;
+    position: fixed;
+    left: 0px;
+    top: 0px;
+    background: -webkit-linear-gradient(top, rgba(20,20,20,0.9), transparent);
+    color: rgba(255, 255, 255, 0.7);
+    text-align: justify;
+    padding-left: 5px;
+    padding-right: 25px;
+}
+
+#navbar span {
+    display: inline-block;
+    height: 50px;
+    line-height: 50px;
+}
+
+.stretch {
+    width: 100%;
+    display: inline-block;
+    font-size: 0;
+    line-height: 0;
+}
+
+.mat-drawer-container
+{
+    background-color: transparent !important;
+}
+
+.container {
+    height: 100%;
+    width:100%;
+    display: flex;
+    flex-direction: column;
+    position: absolute;
+}
+
+.example-is-mobile .example-toolbar {
+    position: fixed;
+    z-index: 2;
+}
+
+h1.example-app-name {
+    margin-left: 8px;
+}
+
+.example-sidenav-container {
+    flex: 1;
+}
+
+.example-is-mobile .example-sidenav-container {
+    flex: 1 0 auto;
+}
+
 .planet {
-	display: inline-flex;
-	flex-direction: column;
-	align-content: center;
+    display: inline-flex;
+    flex-direction: column;
+    align-content: center;
 }
 
 .planet > [data-content=name] {
-	text-align: center;
-	color: rgba(255,255,255,0.7);
-	letter-spacing: -0.5px;
+    text-align: center;
+    color: rgba(255,255,255,0.7);
+    letter-spacing: -0.5px;
 }
 
 .planet > [data-content=image] {
-	display: inline-block;
-	width: 200px;
-	height: 200px;
-	background: left repeat, #323;
-	background-size: 628px 200px;
-	background-position: left;
-	border-radius: 100%;
-	margin: 20px;
-	border: 1px solid rgba(128,128,128,0.7);
-	box-shadow: 0 0 100px -5px #fff, 20px -24px 120px 0px #000 inset;
-	/*animation: planet-roll 15s infinite linear, planet-glow 10s infinite ease-in-out alternate-reverse;*/
-	transition: transform ease 0.7s, margin ease 0.7s, opacity ease 0.5s;
-	opacity: 0.9;
-	z-index: 0;
-	cursor: pointer;
+    display: inline-block;
+    width: 200px;
+    height: 200px;
+    background: left repeat, #323;
+    background-size: 628px 200px;
+    background-position: left;
+    border-radius: 100%;
+    margin: 20px;
+    border: 1px solid rgba(128,128,128,0.7);
+    box-shadow: 0 0 100px -5px #fff, 20px -24px 120px 0px #000 inset;
+    /*animation: planet-roll 15s infinite linear, planet-glow 10s infinite ease-in-out alternate-reverse;*/
+    transition: transform ease 0.7s, margin ease 0.7s, opacity ease 0.5s;
+    opacity: 0.9;
+    z-index: 0;
+    cursor: pointer;
+    position: relative;
 }
 
-.planet:hover > [data-content=image] {
-	transform: scale(1.5);
-	margin: 70px 50px;
-	z-index: 2;
-	opacity: 1;
+.planet > [data-content=image]:hover {
+    transform: scale(1.5);
+    /*margin: 70px 50px;*/
+    z-index: 2;
+    opacity: 1;
+}
+
+.planet-infos {
+    top: 50%;
+    left: 50%;
+    transform: translateX(-50%) translateY(-50%);
+    position: absolute;
+    opacity: 0;
+    transition: opacity ease 0.5s;
+    color: white;
+    border: 1px solid black;
+    border-radius: 5px;
+    padding: 10px;
+    background-color: #205;
+}
+
+.planet > [data-content=image]:hover .planet-infos {
+    opacity: 0.8;
+    transform: translateX(-50%) translateY(-50%);
 }
 
 @keyframes planet-roll {
-	0% {
-		background-position: 0px 0px;
-	}
-	100% {
-		background-position: -628px 0;
-	}
+    0% {
+        background-position: 0px 0px;
+    }
+    100% {
+        background-position: -628px 0;
+    }
 }
 
 @keyframes planet-glow {
-	0%   {box-shadow: 0 0 100px -5px #fff, 20px -24px 120px 0px #000 inset;}
-	5%   {box-shadow: 0 0 150px 0px  #fff, 20px -24px 120px 0px #000 inset;}
-	15%   {box-shadow: 0 0 100px -5px #fff, 20px -24px 120px 0px #000 inset;}
-	30%  {box-shadow: 0 0 150px 0px  #fff, 20px -24px 120px 0px #000 inset;}
-	40%  {box-shadow: 0 0 100px -5px #fff, 20px -24px 120px 0px #000 inset;}
-	65%  {box-shadow: 0 0 150px 0px  #fff, 20px -24px 120px 0px #000 inset;}
-	70%  {box-shadow: 0 0 200px -5px #fff, 20px -24px 120px 0px #000 inset;}
-	100% {box-shadow: 0 0 140px 0px  #fff, 20px -24px 120px 0px #000 inset;}
+    0%   {box-shadow: 0 0 100px -5px #fff, 20px -24px 120px 0px #000 inset;}
+    5%   {box-shadow: 0 0 150px 0px  #fff, 20px -24px 120px 0px #000 inset;}
+    15%  {box-shadow: 0 0 100px -5px #fff, 20px -24px 120px 0px #000 inset;}
+    30%  {box-shadow: 0 0 150px 0px  #fff, 20px -24px 120px 0px #000 inset;}
+    40%  {box-shadow: 0 0 100px -5px #fff, 20px -24px 120px 0px #000 inset;}
+    65%  {box-shadow: 0 0 150px 0px  #fff, 20px -24px 120px 0px #000 inset;}
+    70%  {box-shadow: 0 0 200px -5px #fff, 20px -24px 120px 0px #000 inset;}
+    100% {box-shadow: 0 0 140px 0px  #fff, 20px -24px 120px 0px #000 inset;}
 }
 
 .planet[data-type=lava] > [data-content=image] {
-	background-image: url(../../assets/planet-textures/lava.png);
+    background-image: url(../../assets/planet-textures/lava.png);
 }
+
 .planet[data-type=ice] > [data-content=image] {
-	background-image: url(../../assets/planet-textures/ice.jpg);
+    background-image: url(../../assets/planet-textures/ice.jpg);
 }
+
 .planet[data-type=forest] > [data-content=image] {
-	background-image: url(../../assets/planet-textures/forest.jpg);
+    background-image: url(../../assets/planet-textures/forest.jpg);
 }

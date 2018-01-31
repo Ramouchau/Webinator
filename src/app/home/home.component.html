@@ -1,7 +1,33 @@
 <div id="content">
-	<app-navbar></app-navbar>
-	<span *ngFor="let planet of user.planets" class=planet data-type=lava>
-		<div data-content=image></div>
-		<div data-content=name>{{ planet.name }}</div>
-	</span>
+	<div id=navbar>
+		<button mat-icon-button (click)="snav.toggle()"><mat-icon>menu</mat-icon></button>
+		<span *ngIf="user.planets">{{ user.planets.length || "Undefined" }}&nbsp;Planets</span>
+		<span *ngIf="!user.planets">Undefined</span>
+		<span>{{ user.username || "Undefined" }}</span>
+		<span *ngIf="user.planets">{{ user.ships || "Undefined" }}&nbsp;Ships</span>
+		<span *ngIf="!user.planets">Undefined</span>
+		<span style="text-align:right">Score&nbsp;:&nbsp;{{ user.score || "0" }}</span>
+		<span class="stretch"></span>
+	</div>
+	<mat-sidenav-container class="container">
+		<mat-sidenav #snav [mode]="side">
+			<mat-nav-list>
+				<a mat-list-item routerLink=".">Attack a enemy planet</a>
+				<a mat-list-item routerLink=".">test</a>
+				<a mat-list-item routerLink=".">test</a>
+				<a mat-list-item routerLink=".">test</a>
+			</mat-nav-list>
+		</mat-sidenav>
+		<mat-sidenav-content>
+			<span *ngFor="let planet of user.planets" class=planet data-type=lava>
+				<div data-content=image>
+					<div class="planet-infos">
+						<div>{{ planet.age }}&nbsp;Y</div>
+						<div>{{ planet.shipsCount }}&nbsp;Ships</div>
+					</div>
+				</div>
+				<div data-content=name>{{ planet.name }}</div>
+			</span>
+		</mat-sidenav-content>
+	</mat-sidenav-container>
 </div>

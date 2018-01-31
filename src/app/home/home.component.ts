@@ -5,6 +5,7 @@ import { Planet } from '../_models/planet';
 import { user, User } from '../_models/user';
 import {} from '@wawolf/socket-router';
 
+
 @Component({
 	selector: 'app-home',
 	templateUrl: './home.component.html',
@@ -13,6 +14,7 @@ import {} from '@wawolf/socket-router';
 
 export class HomeComponent implements OnInit {
 
+	public planets: Array<Planet>;
 	public user = user;
 
 	public constructor(private _homeService: HomeService,
@@ -28,8 +30,14 @@ export class HomeComponent implements OnInit {
 			console.log(user);
 		});
 		this._homeService.getUserPlanets().then((res: Array<Planet>) => {
+			console.log(res);
 			this.user.planets = res;
-			console.log(user.planets);
+			this.user.ships = 0;
+			for (var i = this.user.planets.length - 1; i >= 0; i--) {
+				this.user.ships += this.user.planets[i].shipsCount;
+			}
+		}).catch((err) => {
+			console.log('ERR:', err);
 		});
 	}
 }
