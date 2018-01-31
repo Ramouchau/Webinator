@@ -19,7 +19,7 @@ export class HomeComponent implements OnInit {
 	public canSelectPlanet: boolean = false;
 	public planetAttack: Planet = null;
 	public attackPrepare: boolean = false;
-
+	public planetsChoose: Array<Planet> = new Array<Planet>();
 	public constructor(private _homeService: HomeService,
 		private _router: Router) { /**/ }
 
@@ -50,7 +50,10 @@ export class HomeComponent implements OnInit {
 			console.log('ERR:', err);
 		});
 	}
-
+	public addPlanet()
+	{
+		this.planetsChoose.push(null);
+	}
 	public getType = (name) => {
 		let ttl = 0;
 		for (let i = name.length - 1; i >= 0; i--)

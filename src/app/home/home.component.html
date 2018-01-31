@@ -22,17 +22,26 @@
 			<div *ngIf="attackPrepare && planetAttack != null">
 				<mat-card class="attack-card">
 					<mat-card-header>
-						<div mat-card-avatar class="example-header-image"></div>
-						<mat-card-title>Nom planète</mat-card-title>
-						<mat-card-subtitle>Level Planète</mat-card-subtitle>
+						<div mat-card-avatar></div>
+						<mat-card-title>{{ planetAttack.name }}</mat-card-title>
+						<mat-card-subtitle>{{ planetAttack.age }}</mat-card-subtitle>
 					</mat-card-header>
 					<mat-card-content>
 						<mat-list>
 							<mat-list-item *ngIf="planetsChoose.length == 0">Choisissez les planètes qui attaqueront</mat-list-item>
+							<mat-list-item *ngFor="let plan of planetsChoose">
+								<mat-form-field *ngIf="plan == null">
+									<mat-select placeholder="Your planets">
+									  <mat-option *ngFor="let myplan of user.planets" [value]="myplan.id">
+										{{ myplan.name }}
+									  </mat-option>
+									</mat-select>
+							  </mat-form-field>
+							</mat-list-item>
 						</mat-list>
 					</mat-card-content>
 					<mat-card-actions>
-						<button mat-fab color="primary">+</button>
+						<button mat-fab (click)="addPlanet()" color="primary">+</button>
 						<button mat-raised-button color="warn">Attack</button>
 					</mat-card-actions>
 				</mat-card>
