@@ -41,6 +41,15 @@ export class HomeComponent implements OnInit {
 		});
 	}
 
+	public getType = (name) => {
+		var ttl = 0;
+		for (var i = name.length - 1; i >= 0; i--) {
+			ttl += name[i].charCodeAt();
+		}
+		ttl = Math.ceil(ttl * 12.912) % 3;
+		return ["lava", "ice", "forest"][ttl];
+	}
+
 	public launchAttack() {
 		console.log("ATTACKKK");
 	}

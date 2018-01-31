@@ -116,14 +116,14 @@
     100% {box-shadow: 0 0 140px 0px  #fff, 20px -24px 120px 0px #000 inset;}
 }
 
-.planet[data-type=lava] > [data-content=image] {
+.lava > [data-content=image] {
     background-image: url(../../assets/planet-textures/lava.png);
 }
 
-.planet[data-type=ice] > [data-content=image] {
+.ice > [data-content=image] {
     background-image: url(../../assets/planet-textures/ice.jpg);
 }
 
-.planet[data-type=forest] > [data-content=image] {
+.forest > [data-content=image] {
     background-image: url(../../assets/planet-textures/forest.jpg);
 }

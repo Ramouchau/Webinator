@@ -6,6 +6,7 @@ export class User {
 	public email: string;
 	public score: number|null;
 	public lastUpdate: Date;
+	public actionPointsCount: number;
 	public planets: Array<Planet>;
 }
 
