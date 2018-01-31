@@ -19,11 +19,29 @@
 			</mat-nav-list>
 		</mat-sidenav>
 		<mat-sidenav-content>
+			<div *ngIf="attackPrepare && planetAttack != null">
+				<mat-card class="attack-card">
+					<mat-card-header>
+						<div mat-card-avatar class="example-header-image"></div>
+						<mat-card-title>Nom planète</mat-card-title>
+						<mat-card-subtitle>Level Planète</mat-card-subtitle>
+					</mat-card-header>
+					<mat-card-content>
+						<mat-list>
+							<mat-list-item *ngIf="planetsChoose.length == 0">Choisissez les planètes qui attaqueront</mat-list-item>
+						</mat-list>
+					</mat-card-content>
+					<mat-card-actions>
+						<button mat-fab color="primary">+</button>
+						<button mat-raised-button color="warn">Attack</button>
+					</mat-card-actions>
+				</mat-card>
+			</div>
 			<div *ngIf="user.planets && user.planets.length == 0" style="width:100%;display:flex;flex-direction: row;justify-content: center;align-items: center;height: 80%;">
 				<button mat-raised-button (click)="startGame()">Start game</button>
 			</div>
 			<span *ngFor="let planet of planets" class="planet {{ getType(planet.name) }}">
-				<div data-content=image (click)="selectPlanet(planet.id)">
+				<div data-content=image (click)="selectPlanet(planet)">
 					<div class="planet-infos">
 						<div>{{ planet.age }}&nbsp;Y</div>
 						<div>{{ planet.shipsCount }}&nbsp;Ships</div>

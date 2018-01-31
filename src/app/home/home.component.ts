@@ -17,6 +17,8 @@ export class HomeComponent implements OnInit {
 	public planets = planets;
 	public user: User = user;
 	public canSelectPlanet: boolean = false;
+	public planetAttack: Planet = null;
+	public attackPrepare: boolean = false;
 
 	public constructor(private _homeService: HomeService,
 		private _router: Router) { /**/ }
@@ -64,10 +66,13 @@ export class HomeComponent implements OnInit {
 		this.canSelectPlanet = true;
 	}
 
-	public selectPlanet(id) {
+	public selectPlanet(pl) {
 		if (!this.canSelectPlanet) {
 			return;
 		}
-
+		this.planetAttack = pl;
+		if (this.planetAttack != null) {
+			this.attackPrepare = true;
+		}
 	}
 }
