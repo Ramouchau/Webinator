@@ -50,7 +50,7 @@ export class HomeService {
 		return new Promise((resolve, reject) => {
 			this._socket.disconnect();
 			localStorage.removeItem(loginToken);
-			resolve(true)
+			resolve(true);
 		});
 	}
 
