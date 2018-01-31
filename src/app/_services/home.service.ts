@@ -42,10 +42,12 @@ export class HomeService {
 	public getUserPlanets() {
 		return new Promise((resolve, reject) => {
 			const token = localStorage.getItem(loginToken);
-			this._rsoket.get<RSocketListUserPlanetsInputs, APIError | APISuccess<RSocketListUserPlanetsOutputs>>('list-user-planets', { token: token }, (err, data) => {
+			this._rsoket.get<RSocketListUserPlanetsInputs, APIError | APISuccess<RSocketListUserPlanetsOutputs>>('list-user-planets', {}, (err, data) => {
 				if (err)
 					return reject(err);
-				else if (data)
+				else if (data.error)
+					return reject(data.error);
+				else
 					return resolve(data.contents.planets);
 			});
 		});
