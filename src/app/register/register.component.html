@@ -17,7 +17,7 @@
 			<mat-form-field class="full-width-input">
 				<input matInput placeholder="Password" type="password" formControlName="password" required>
 				<mat-error *ngIf="passwordCtrl.hasError('minlength')">
-					Password needs at least 6 characters
+					Password needs at least 8 characters
 				</mat-error>
 			</mat-form-field>
 			<mat-error *ngIf="requestError">
