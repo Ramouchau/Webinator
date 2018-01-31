@@ -46,6 +46,14 @@ export class HomeService {
 		});
 	}
 
+	public disconnect() {
+		return new Promise((resolve, reject) => {
+			this._socket.disconnect();
+			localStorage.removeItem(loginToken);
+			resolve(true)
+		});
+	}
+
 	public getUserPlanets() {
 		return new Promise((resolve, reject) => {
 			this._rsoket.get<RSocketListUserPlanetsInputs, APIError | APISuccess<RSocketListUserPlanetsOutputs>>('list-user-planets', {}, (err, data) => {
@@ -90,7 +98,8 @@ export class HomeService {
 
 	public getTargetableShip() {
 		return new Promise((resolve, reject) => {
-			this._rsoket.get<RSocketListTargetablePlanetsInputs, APIError | APISuccess<RSocketListTargetablePlanetsOutputs>>('start-game', {}, (err, data) => {
+			// tslint:disable-next-line:max-line-length
+			this._rsoket.get<RSocketListTargetablePlanetsInputs, APIError | APISuccess<RSocketListTargetablePlanetsOutputs>>('list-targetable-planets', {}, (err, data) => {
 				if (err)
 					return reject(err);
 				else if (data.error)

@@ -31,12 +31,12 @@ export class HomeComponent implements OnInit {
 	}
 	public disconnect()
 	{
-		/*this._homeService.disconnect().then((res: string) =>
+		this._homeService.disconnect().then((res) =>
 		{
-			console.log(res);
+			this._router.navigate(['/login']);
 		}).catch((err) => {
 			console.log('ERR:', err);
-		});*/
+		});
 	}
 	public ngOnInit() {
 		this._homeService.connect((data) => {
@@ -57,8 +57,8 @@ export class HomeComponent implements OnInit {
 	}
 
 	public launchAttack() {
-		/*this._homeService.getTargetableShip().catch((err) => {
+		this._homeService.getTargetableShip().catch((err) => {
 			console.log('ERR:', err);
-		});*/
+		});
 	}
 }
