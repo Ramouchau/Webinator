@@ -55,7 +55,7 @@ export class HomeService {
 		});
 	}
 
-	public attackPlanet() {
-
+	public attackPlanet(target, troops) {
+		
 	}
 }

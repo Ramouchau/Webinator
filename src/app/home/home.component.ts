@@ -40,4 +40,8 @@ export class HomeComponent implements OnInit {
 			console.log('ERR:', err);
 		});
 	}
+
+	public launchAttack() {
+		console.log("ATTACKKK");
+	}
 }

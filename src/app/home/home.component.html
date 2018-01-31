@@ -12,10 +12,10 @@
 	<mat-sidenav-container class="container">
 		<mat-sidenav #snav [mode]="side">
 			<mat-nav-list>
-				<a mat-list-item routerLink=".">Attack a enemy planet</a>
-				<a mat-list-item routerLink=".">test</a>
-				<a mat-list-item routerLink=".">test</a>
-				<a mat-list-item routerLink=".">test</a>
+				<a mat-list-item (click)="launchAttack()">Invade a planet</a>
+				<a mat-list-item>test</a>
+				<a mat-list-item>test</a>
+				<a mat-list-item>test</a>
 			</mat-nav-list>
 		</mat-sidenav>
 		<mat-sidenav-content>

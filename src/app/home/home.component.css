@@ -24,9 +24,12 @@
     line-height: 0;
 }
 
-.mat-drawer-container
-{
+.mat-drawer-container {
     background-color: transparent !important;
+}
+
+.mat-drawer-container a {
+    user-select: none;
 }
 
 .container {
@@ -35,23 +38,6 @@
     display: flex;
     flex-direction: column;
     position: absolute;
-}
-
-.example-is-mobile .example-toolbar {
-    position: fixed;
-    z-index: 2;
-}
-
-h1.example-app-name {
-    margin-left: 8px;
-}
-
-.example-sidenav-container {
-    flex: 1;
-}
-
-.example-is-mobile .example-sidenav-container {
-    flex: 1 0 auto;
 }
 
 .planet {
@@ -100,10 +86,9 @@ h1.example-app-name {
     opacity: 0;
     transition: opacity ease 0.5s;
     color: white;
-    border: 1px solid black;
-    border-radius: 5px;
+    border-radius: 2px;
     padding: 10px;
-    background-color: #205;
+    background-color: #325;
 }
 
 .planet > [data-content=image]:hover .planet-infos {
