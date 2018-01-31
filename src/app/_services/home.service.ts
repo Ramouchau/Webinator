@@ -105,7 +105,10 @@ export class HomeService {
 				else if (data.error)
 					return reject(data.error);
 				else {
-					for (const planet of data.contents.planets)
+					while (planets.length > 0) {
+						planets.pop();
+					}
+					for (const planet of data.contents.planets) {
 						planets.push({
 							id: planet.id,
 							age: planet.age,
@@ -113,8 +116,9 @@ export class HomeService {
 							lastUpdateTime: planet.lastUpdateTime,
 							name: planet.name,
 							shipsCount: planet.shipsCount,
-							owner: { id: planet.owner.id, username: planet.owner.username }
+							owner: (planet.owner) ? { id: planet.owner.id, username: planet.owner.username } : null
 						});
+					}
 					return resolve(true);
 				}
 			});

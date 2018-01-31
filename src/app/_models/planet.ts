@@ -7,7 +7,7 @@ export class Planet {
 	public event: 'none'|'meteorit';
 	public shipsCount: number;
 	public lastUpdateTime: Date;
-	public owner: User|null;
+	public owner?: User|null;
 }
 
 export const planets: Array<Planet> = [];
