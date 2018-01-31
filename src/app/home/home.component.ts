@@ -57,7 +57,9 @@ export class HomeComponent implements OnInit {
 	}
 
 	public launchAttack() {
-		this._homeService.getTargetableShip().catch((err) => {
+		this._homeService.getTargetablePlanets().then((res) => {
+			console.log('bla');
+		}).catch((err) => {
 			console.log('ERR:', err);
 		});
 	}

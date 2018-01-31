@@ -96,7 +96,7 @@ export class HomeService {
 		});
 	}
 
-	public getTargetableShip() {
+	public getTargetablePlanets() {
 		return new Promise((resolve, reject) => {
 			// tslint:disable-next-line:max-line-length
 			this._rsoket.get<RSocketListTargetablePlanetsInputs, APIError | APISuccess<RSocketListTargetablePlanetsOutputs>>('list-targetable-planets', {}, (err, data) => {
