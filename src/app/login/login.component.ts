@@ -35,7 +35,7 @@ export class LoginComponent implements OnInit {
 			})
 				.then((data) => {
 					if (data.error) {
-						this.loginError = data.error.toString();
+						this.loginError = data.error.devInfo;
 						return;
 					}
 					localStorage.setItem(loginToken, data.contents.token);
