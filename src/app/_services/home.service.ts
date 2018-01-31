@@ -24,10 +24,10 @@ export class HomeService {
 	public connect(cb: (data: RSocketLoginOutputs | null) => void) {
 		const token = localStorage.getItem(loginToken);
 		if (!token)
-			return;
+			return cb(null);
 		this._rsoket.get<RSocketLoginInputs, APIError | APISuccess<RSocketLoginOutputs>>('login', { token: token }, (err, data) => {
 			if (err)
-				return;
+				return cb(null);
 			else if (data) {
 				user.id = data.contents.user.id;
 				user.email = data.contents.user.email;
