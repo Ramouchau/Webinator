@@ -16,6 +16,8 @@ export class HomeComponent implements OnInit {
 
 	public planets = planets;
 	public user: User = user;
+	public planetAttack: Planet = null;
+	public attackPrepare: boolean = false;
 
 	public constructor(private _homeService: HomeService,
 		private _router: Router) { /**/ }
