@@ -2,10 +2,9 @@
 	<div id=navbar>
 		<button mat-icon-button (click)="snav.toggle()"><mat-icon>menu</mat-icon></button>
 		<span>{{ user.username || "Undefined" }}</span>
-		<span *ngIf="user.planets">{{ user.planets.length || "Undefined" }}&nbsp;Planets</span>
-		<span *ngIf="!user.planets">Undefined</span>
+		<span>{{ user.planets.length || "Undefined" }}&nbsp;Planets</span>
 		<span>{{ user.ships || "Undefined" }}&nbsp;Ships</span>
-		<span>{{ user.actionPointsCount }}&nbsp;/&nbsp;12&nbsp;PA</span>
+		<span>{{ user.actionPointsCount || "Undefined" }}&nbsp;/&nbsp;12&nbsp;PA</span>
 		<span style="text-align:right">Score&nbsp;:&nbsp;{{ user.score || "0" }}</span>
 		<span class="stretch"></span>
 	</div>
@@ -15,10 +14,14 @@
 				<a mat-list-item (click)="launchAttack()">Invade a planet</a>
 				<a mat-list-item>test</a>
 				<a mat-list-item>test</a>
-				<a mat-list-item>test</a>
+				<mat-divider></mat-divider>
+				<a mat-list-item (click)="disconnect()">Deconnexion</a>
 			</mat-nav-list>
 		</mat-sidenav>
 		<mat-sidenav-content>
+			<div *ngIf="user.planets.length == 0" style="width:100%;display:flex;flex-direction: row;justify-content: center;align-items: center;height: 80%;">
+				<button mat-raised-button (click)="startGame()">Start game</button>
+			</div>
 			<span *ngFor="let planet of user.planets" class="planet {{ getType(planet.name) }}">
 				<div data-content=image>
 					<div class="planet-infos">

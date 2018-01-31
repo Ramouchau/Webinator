@@ -1,6 +1,7 @@
 import { Component, OnInit } from '@angular/core';
 import { Router } from '@angular/router';
 import { HomeService } from '../_services/home.service';
+import { LoginService } from '../_services/login.service';
 import { Planet } from '../_models/planet';
 import { user, User } from '../_models/user';
 import {} from '@wawolf/socket-router';
@@ -16,9 +17,27 @@ export class HomeComponent implements OnInit {
 	public planets: Array<Planet>;
 	public user: User = user;
 
-	public constructor(private _homeService: HomeService,
+	public constructor(private _homeService: HomeService, private _loginService: LoginService,
 		private _router: Router) { /**/ }
 
+	public startGame()
+	{
+		this._homeService.startGame().then((res: string) =>
+		{
+			console.log(res);
+		}).catch((err) => {
+			console.log('ERR:', err);
+		});
+	}
+	public disconnect()
+	{
+		this._loginService.disconnect().then((res: string) =>
+		{
+			console.log(res);
+		}).catch((err) => {
+			console.log('ERR:', err);
+		});
+	}
 	public ngOnInit() {
 		this._homeService.connect((data) => {
 			if (!data)
