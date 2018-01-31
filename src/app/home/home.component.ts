@@ -12,7 +12,7 @@ import { user } from '../_models/user';
 
 export class HomeComponent implements OnInit {
 
-	public planets: Array<Planet>;
+	public planets = user.planets;
 
 	public constructor(private _homeService: HomeService,
 		private _router: Router) { /**/ }
@@ -22,8 +22,8 @@ export class HomeComponent implements OnInit {
 			this._router.navigate(['/login']);
 			return;
 		}
-		this._homeService.getUserPlanets().then((res: Array<Planet>) => {
-			this.planets = res;
-		});
+		// this._homeService.getUserPlanets().then((res: Array<Planet>) => {
+		// 	this.planets = res;
+		// });
 	}
 }
