@@ -48,7 +48,7 @@ export class LoginComponent implements OnInit {
 
 	private _createForm() {
 		this.emailCtrl = new FormControl('', [Validators.email, Validators.required]);
-		this.passwordCtrl = new FormControl('', [Validators.minLength(6), Validators.required]);
+		this.passwordCtrl = new FormControl('', [Validators.minLength(8), Validators.required]);
 
 		this.loginForm = new FormGroup({
 			email: this.emailCtrl,

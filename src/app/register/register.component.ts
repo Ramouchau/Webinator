@@ -50,7 +50,7 @@ export class RegisterComponent implements OnInit {
 	private _createForm() {
 		this.emailCtrl = new FormControl('', [Validators.email, Validators.required]);
 		this.userNameCtrl = new FormControl('', [Validators.minLength(3), Validators.required]);
-		this.passwordCtrl = new FormControl('', [Validators.minLength(6), Validators.required]);
+		this.passwordCtrl = new FormControl('', [Validators.minLength(8), Validators.required]);
 
 		this.registerForm = new FormGroup({
 			email: this.emailCtrl,
