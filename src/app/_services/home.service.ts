@@ -14,6 +14,7 @@ import {
 import { loginToken } from '../../env/localStorage';
 import { user } from '../_models/user';
 import { Router } from '@wawolf/socket-router-client';
+import { forEach } from '@angular/router/src/utils/collection';
 
 @Injectable()
 
@@ -35,7 +36,6 @@ export class HomeService {
 				user.email = data.contents.user.email;
 				user.score = data.contents.user.score;
 				user.username = data.contents.user.username;
-				user.planets = data.contents.user.planets;
 				return cb(data.contents);
 			}
 		});
@@ -56,6 +56,6 @@ export class HomeService {
 	}
 
 	public attackPlanet(target, troops) {
-		
+
 	}
 }

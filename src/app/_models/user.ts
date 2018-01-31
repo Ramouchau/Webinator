@@ -8,6 +8,7 @@ export class User {
 	public lastUpdate: Date;
 	public actionPointsCount: number;
 	public planets: Array<Planet>;
+	public ships: number;
 }
 
 export const user = new User();
