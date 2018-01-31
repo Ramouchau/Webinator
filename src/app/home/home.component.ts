@@ -16,6 +16,7 @@ export class HomeComponent implements OnInit {
 
 	public planets = planets;
 	public user: User = user;
+	public canSelectPlanet: boolean = false;
 
 	public constructor(private _homeService: HomeService,
 		private _router: Router) { /**/ }
@@ -60,5 +61,13 @@ export class HomeComponent implements OnInit {
 		this._homeService.getTargetableShip().catch((err) => {
 			console.log('ERR:', err);
 		});
+		this.canSelectPlanet = true;
+	}
+
+	public selectPlanet(id) {
+		if (!this.canSelectPlanet) {
+			return;
+		}
+
 	}
 }

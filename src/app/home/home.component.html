@@ -23,7 +23,7 @@
 				<button mat-raised-button (click)="startGame()">Start game</button>
 			</div>
 			<span *ngFor="let planet of planets" class="planet {{ getType(planet.name) }}">
-				<div data-content=image>
+				<div data-content=image (click)="selectPlanet(planet.id)">
 					<div class="planet-infos">
 						<div>{{ planet.age }}&nbsp;Y</div>
 						<div>{{ planet.shipsCount }}&nbsp;Ships</div>
