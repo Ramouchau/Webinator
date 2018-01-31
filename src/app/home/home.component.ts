@@ -20,6 +20,24 @@ export class HomeComponent implements OnInit {
 	public constructor(private _homeService: HomeService,
 		private _router: Router) { /**/ }
 
+	public startGame()
+	{
+		this._homeService.startGame().then((res: string) =>
+		{
+			console.log(res);
+		}).catch((err) => {
+			console.log('ERR:', err);
+		});
+	}
+	public disconnect()
+	{
+		/*this._homeService.disconnect().then((res: string) =>
+		{
+			console.log(res);
+		}).catch((err) => {
+			console.log('ERR:', err);
+		});*/
+	}
 	public ngOnInit() {
 		this._homeService.connect((data) => {
 			if (!data)
