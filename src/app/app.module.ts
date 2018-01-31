@@ -14,6 +14,7 @@ import { HomeComponent } from './home/home.component';
 import { HomeService } from './_services/home.service';
 import { LoginComponent } from './login/login.component';
 import { LoginService } from './_services/login.service';
+import { NavbarComponent } from './navbar/navbar.component';
 import { RegisterComponent } from './register/register.component';
 import { RegisterService } from './_services/register.service';
 
@@ -24,6 +25,7 @@ const config: SocketIoConfig = { url: serverUrl, options: {} };
 		AppComponent,
 		HomeComponent,
 		LoginComponent,
+		NavbarComponent,
 		RegisterComponent
 	],
 	imports: [
