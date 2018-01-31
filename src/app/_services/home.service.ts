@@ -41,13 +41,13 @@ export class HomeService {
 
 	public getUserPlanets() {
 		return new Promise((resolve, reject) => {
-			const planets: Array<Planet> = [
-				{ id: 0, age: 1, event: 'meteorit', lastUpdateTime: new Date(), name: 'DOM TOMIE', owner: null, shipsCount: 3 },
-				{ id: 0, age: 1, event: 'meteorit', lastUpdateTime: new Date(), name: 'MARIOOO', owner: null, shipsCount: 3 },
-				{ id: 0, age: 1, event: 'meteorit', lastUpdateTime: new Date(), name: 'SPAGETHHH', owner: null, shipsCount: 3 },
-				{ id: 0, age: 1, event: 'meteorit', lastUpdateTime: new Date(), name: 'El HERMANOM DE JYREN', owner: null, shipsCount: 3 }
-			];
-			resolve(planets);
+			const token = localStorage.getItem(loginToken);
+			this._rsoket.get<RSocketListUserPlanetsInputs, APIError | APISuccess<RSocketListUserPlanetsOutputs>>('list-user-planets', { token: token }, (err, data) => {
+				if (err)
+					return reject(err);
+				else if (data)
+					return resolve(data.contents.planets);
+			});
 		});
 	}
 }
