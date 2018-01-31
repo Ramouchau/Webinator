@@ -1,6 +1,6 @@
 <div id="content">
 	<app-navbar></app-navbar>
-	<span *ngFor="let planet of planets" class=planet data-type=lava>
+	<span *ngFor="let planet of user.planets" class=planet data-type=lava>
 		<div data-content=image></div>
 		<div data-content=name>{{ planet.name }}</div>
 	</span>

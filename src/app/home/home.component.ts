@@ -13,8 +13,7 @@ import {} from '@wawolf/socket-router';
 
 export class HomeComponent implements OnInit {
 
-	public planets: Array<Planet>;
-	public user: User;
+	public user = user;
 
 	public constructor(private _homeService: HomeService,
 		private _router: Router) { /**/ }
@@ -27,9 +26,6 @@ export class HomeComponent implements OnInit {
 			}
 			this.user = data.user;
 			console.log(user);
-		});
-		this._homeService.getUserPlanets().then((res: Array<Planet>) => {
-			this.planets = res;
 		});
 	}
 }
