@@ -1,9 +1,0 @@
-<div id=navbar>
-	<span>{{ user.username || "Undefined" }}</span>
-	<span *ngIf="user.planets">{{ user.planets.length || "Undefined" }}</span>
-	<span *ngIf="!user.planets">Undefined</span>
-	<span *ngIf="user.planets">{{ user.planets.length || "Undefined" }}</span>
-	<span *ngIf="!user.planets">Undefined</span>
-	<span>{{ user.score || "Undefined" }}</span>
-	<span class="stretch"></span>
-</div>

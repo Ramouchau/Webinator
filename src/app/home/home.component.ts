@@ -4,6 +4,7 @@ import { HomeService } from '../_services/home.service';
 import { Planet } from '../_models/planet';
 import { user } from '../_models/user';
 
+
 @Component({
 	selector: 'app-home',
 	templateUrl: './home.component.html',
@@ -13,6 +14,7 @@ import { user } from '../_models/user';
 export class HomeComponent implements OnInit {
 
 	public planets: Array<Planet>;
+	public user = user;
 
 	public constructor(private _homeService: HomeService,
 		private _router: Router) { /**/ }
