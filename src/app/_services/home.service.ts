@@ -56,6 +56,6 @@ export class HomeService {
 	}
 
 	public attackPlanet(target, troops) {
-
+		/* */
 	}
 }

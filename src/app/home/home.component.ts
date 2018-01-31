@@ -5,7 +5,6 @@ import { Planet } from '../_models/planet';
 import { user, User } from '../_models/user';
 import {} from '@wawolf/socket-router';
 
-
 @Component({
 	selector: 'app-home',
 	templateUrl: './home.component.html',
@@ -38,9 +37,8 @@ export class HomeComponent implements OnInit {
 
 	public getType = (name) => {
 		let ttl = 0;
-		for (let i = name.length - 1; i >= 0; i--) {
+		for (let i = name.length - 1; i >= 0; i--)
 			ttl += name[i].charCodeAt();
-		}
 		ttl = Math.ceil(ttl * 12.912) % 3;
 		return ['lava', 'ice', 'forest'][ttl];
 	}
