@@ -2,8 +2,8 @@
 	<div id=navbar>
 		<button mat-icon-button (click)="snav.toggle()"><mat-icon>menu</mat-icon></button>
 		<span>{{ user.username || "Undefined" }}</span>
-		<span *ngIf="user.planets">{{ user.planets.length || "Undefined" }}&nbsp;Planets</span>
-		<span *ngIf="!user.planets">Undefined</span>
+		<span *ngIf="user.planets">{{ user.planets.size || "Undefined" }}&nbsp;Planets</span>
+		<span *ngIf="!user.planets">Undefined&nbsp;Planets</span>
 		<span>{{ user.ships || "Undefined" }}&nbsp;Ships</span>
 		<span>{{ user.actionPointsCount }}&nbsp;/&nbsp;12&nbsp;PA</span>
 		<span style="text-align:right">Score&nbsp;:&nbsp;{{ user.score || "0" }}</span>
@@ -19,7 +19,7 @@
 			</mat-nav-list>
 		</mat-sidenav>
 		<mat-sidenav-content>
-			<span *ngFor="let planet of user.planets" class="planet {{ getType(planet.name) }}">
+			<span *ngFor="let planet of planets" class="planet {{ getType(planet.name) }}">
 				<div data-content=image>
 					<div class="planet-infos">
 						<div>{{ planet.age }}&nbsp;Y</div>

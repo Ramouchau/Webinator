@@ -9,3 +9,5 @@ export class Planet {
 	public lastUpdateTime: Date;
 	public owner: User|null;
 }
+
+export const planets: Array<Planet> = [];

@@ -1,5 +1,4 @@
 import { Injectable } from '@angular/core';
-import { Planet } from '../_models/planet';
 import { Socket } from 'ng-socket-io';
 import {
 	RSocketLoginInputs,
@@ -10,11 +9,14 @@ import {
 	RSocketAttackPlanetOutputs,
 	RSocketStartGameInputs,
 	RSocketStartGameOutputs,
+	RSocketListTargetablePlanetsInputs,
+	RSocketListTargetablePlanetsOutputs,
 	APIError,
 	APISuccess
 } from '@etna-proj/webinator-server';
 import { loginToken } from '../../env/localStorage';
 import { user } from '../_models/user';
+import { planets } from '../_models/planet';
 import { Router } from '@wawolf/socket-router-client';
 import { forEach } from '@angular/router/src/utils/collection';
 
@@ -51,8 +53,24 @@ export class HomeService {
 					return reject(err);
 				else if (data.error)
 					return reject(data.error);
-				else
-					return resolve(data.contents.planets);
+				else {
+					for (const planet of data.contents.planets)
+						planets.push({
+							id: planet.id,
+							age: planet.age,
+							event: planet.event,
+							lastUpdateTime: planet.lastUpdateTime,
+							name: planet.name,
+							shipsCount: planet.shipsCount,
+							owner: { id: planet.owner.id, username: planet.owner.username }
+						});
+					user.planets = planets;
+					user.ships = 0;
+					user.planets.forEach((value) => {
+						user.ships += value.shipsCount;
+					});
+					return resolve(planets);
+				}
 			});
 		});
 	}
@@ -66,6 +84,30 @@ export class HomeService {
 					return reject(data.error);
 				else
 					return resolve(true);
+			});
+		});
+	}
+
+	public getTargetableShip() {
+		return new Promise((resolve, reject) => {
+			this._rsoket.get<RSocketListTargetablePlanetsInputs, APIError | APISuccess<RSocketListTargetablePlanetsOutputs>>('start-game', {}, (err, data) => {
+				if (err)
+					return reject(err);
+				else if (data.error)
+					return reject(data.error);
+				else {
+					for (const planet of data.contents.planets)
+						planets.push({
+							id: planet.id,
+							age: planet.age,
+							event: planet.event,
+							lastUpdateTime: planet.lastUpdateTime,
+							name: planet.name,
+							shipsCount: planet.shipsCount,
+							owner: { id: planet.owner.id, username: planet.owner.username }
+						});
+					return resolve(true);
+				}
 			});
 		});
 	}
