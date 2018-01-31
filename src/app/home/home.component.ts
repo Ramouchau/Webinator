@@ -29,6 +29,7 @@ export class HomeComponent implements OnInit {
 		});
 		this._homeService.getUserPlanets().then((res: Array<Planet>) => {
 			this.user.planets = res;
+			console.log(user.planets);
 		});
 	}
 }
